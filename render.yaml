@@ -2,6 +2,20 @@ services:
   - type: web
     name: flight-tracker
     env: node
+    region: oregon
+    branch: main
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Do NOT include secrets like AVIATIONSTACK_API_KEY here; set them in Render Dashboard
+services:
+  - type: web
+    name: flight-tracker
+    env: node
     plan: free
     branch: main
     buildCommand: "npm install"
