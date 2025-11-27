@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Flight Tracker</title>
+  <style>
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; padding: 20px; }
+    .search { display:flex; gap:8px; margin-bottom:12px; }
+    input, button { padding:8px; font-size:14px; }
+    table { width:100%; border-collapse: collapse; margin-top:12px; }
+    th, td { padding:8px; border:1px solid #ddd; text-align:left; }
+  </style>
+</head>
+<body>
+  <h1>✈️ Flight Tracker</h1>
+  <div class="search">
+    <input id="origin" placeholder="Origin (e.g. TPE)" />
+    <input id="destination" placeholder="Destination (e.g. HND)" />
+    <input id="date" type="date" />
+    <input id="flightNumber" placeholder="Flight # (optional)" />
+    <button id="searchBtn">Search</button>
+  </div>
+
+  <div id="results"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

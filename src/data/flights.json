@@ -1,0 +1,62 @@
+[
+  {
+    "id": "f1",
+    "airline": "TransPacific",
+    "flightNumber": "TP101",
+    "origin": "TPE",
+    "destination": "HND",
+    "departure": "2025-12-01T08:00:00",
+    "arrival": "2025-12-01T12:00:00",
+    "date": "2025-12-01",
+    "status": "On Time",
+    "price": 320
+  },
+  {
+    "id": "f2",
+    "airline": "PacificAir",
+    "flightNumber": "PA202",
+    "origin": "TPE",
+    "destination": "KIX",
+    "departure": "2025-12-01T09:30:00",
+    "arrival": "2025-12-01T11:30:00",
+    "date": "2025-12-01",
+    "status": "Delayed",
+    "price": 210
+  },
+  {
+    "id": "f3",
+    "airline": "AsiaConnect",
+    "flightNumber": "AC303",
+    "origin": "HND",
+    "destination": "TPE",
+    "departure": "2025-12-01T14:00:00",
+    "arrival": "2025-12-01T16:00:00",
+    "date": "2025-12-01",
+    "status": "On Time",
+    "price": 340
+  },
+  {
+    "id": "f4",
+    "airline": "SkyHigh",
+    "flightNumber": "SH404",
+    "origin": "KIX",
+    "destination": "TPE",
+    "departure": "2025-12-02T06:00:00",
+    "arrival": "2025-12-02T08:00:00",
+    "date": "2025-12-02",
+    "status": "Cancelled",
+    "price": 180
+  },
+  {
+    "id": "f5",
+    "airline": "TransPacific",
+    "flightNumber": "TP105",
+    "origin": "TPE",
+    "destination": "HND",
+    "departure": "2025-12-02T10:00:00",
+    "arrival": "2025-12-02T14:00:00",
+    "date": "2025-12-02",
+    "status": "On Time",
+    "price": 330
+  }
+]

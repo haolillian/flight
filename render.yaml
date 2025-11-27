@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: flight-tracker
+    env: node
+    plan: free
+    branch: main
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    # Optional health check path (Render will call this endpoint to verify the app)
+    healthCheckPath: "/api/flights"
+    # Region is optional; remove or change to your preferred region (e.g., oregon, ams)
+    region: oregon
+    envVars:
+      - key: NODE_ENV
+        value: production
