@@ -3,6 +3,7 @@ const path = require('path');
 const cors = require('cors');
 
 const flightsRouter = require('./routes/flights');
+const airportsRouter = require('./routes/airports');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // API routes
 app.use('/api/flights', flightsRouter);
+app.use('/api/airports', airportsRouter);
 
 // Serve static frontend
 app.use(express.static(path.join(__dirname, '..', 'public')));

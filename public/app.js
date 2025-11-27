@@ -45,3 +45,74 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
     </table>
   `;
 });
+
+// --- Autocomplete for origin/destination inputs ---
+function createSuggestionBox(input) {
+  const box = document.createElement('div');
+  box.style.position = 'absolute';
+  box.style.background = '#fff';
+  box.style.border = '1px solid #ddd';
+  box.style.maxHeight = '200px';
+  box.style.overflow = 'auto';
+  box.style.zIndex = 1000;
+  box.style.minWidth = (input.offsetWidth || 200) + 'px';
+  box.className = 'suggestion-box';
+  input.parentNode.style.position = 'relative';
+  input.parentNode.appendChild(box);
+  return box;
+}
+
+function debounce(fn, wait) {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn(...args), wait);
+  };
+}
+
+async function fetchAirports(q) {
+  const res = await fetch('/api/airports?q=' + encodeURIComponent(q));
+  if (!res.ok) return [];
+  return res.json();
+}
+
+function attachAutocomplete(inputId) {
+  const input = document.getElementById(inputId);
+  const box = createSuggestionBox(input);
+
+  const render = (list) => {
+    box.innerHTML = '';
+    if (!list || list.length === 0) {
+      box.style.display = 'none';
+      return;
+    }
+    list.forEach(a => {
+      const el = document.createElement('div');
+      el.style.padding = '6px 8px';
+      el.style.cursor = 'pointer';
+      el.textContent = `${a.city} — ${a.name} (${a.code})`;
+      el.addEventListener('click', () => {
+        // fill input with IATA code for search
+        input.value = a.code;
+        box.style.display = 'none';
+      });
+      box.appendChild(el);
+    });
+    box.style.display = 'block';
+  };
+
+  const onInput = debounce(async () => {
+    const q = input.value.trim();
+    if (!q) { render([]); return; }
+    const list = await fetchAirports(q);
+    render(list);
+  }, 250);
+
+  input.addEventListener('input', onInput);
+  document.addEventListener('click', (e) => {
+    if (!box.contains(e.target) && e.target !== input) box.style.display = 'none';
+  });
+}
+
+attachAutocomplete('origin');
+attachAutocomplete('destination');
